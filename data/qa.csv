@@ -1,0 +1,396 @@
+Idx,Question,Answer
+1,Low battery power is less than 4%. Connect to PD power supply >Do not turn on (displays low battery icon) light,"TYPE C PD AC Loss:
+Can be confirmed with an oscilloscope"
+2,"Type C PD:
+Depending on the Watt number of the Type c PD adapter, STT is limited.","Base on Token "" Name  = ""ADJUST_PD_POWER_TABLE_BY_PDADAPTER""""
+> Reltek and  ITE chip  
+Please note ""Watts are calculated differently"""
+3,"In the ACP part after the PHX, if the DMIC is connected to the Codec, we need to remove it in the BIOS ASL.","DMIC disable:
+Do't include AcpChildPDM.asl, the microphone will not appear in the OS."
+4,"In the ACP part after the PHX, if the DMIC is connected to the Codec, we need to remove it in the BIOS ASL. ","DMIC disable: Do't include AcpChildPDM.asl, the microphone will not appear in the OS."
+5,How can we fix the issue where the OS event log triggers an unexpected issue due to EC not responding?,"EC needs to support mapping the EC RAM to memory
+ space instead of I/O. Please refer to the modified 
+code in the file 'Fix OS event log arise EC no response cause unexpected issue.7z"
+6,"How can we resolve the OS event log issue caused by the EC not responding, which leads to unexpected behavior?",Refer to patch:Fix OS event log arise EC no response cause unexpected
+7,"What is the correct approach to fix the OS event log issue that arises due to EC non-responsiveness, causing unexpected system issues?",Refer to patch:Fix OS event log arise EC no response cause unexpected
+8,"MS WHQL test item failed
+MSFT 3rd Party Market Place Root CA test fail.",Refer to patch:Fixed MSFT 3rd Party Market Place Root CA test fail.7z
+9,OS enable core isolation cause panel garbage during S4 resume.,Refer to patch: Fixed OS enable core isolation cause panel garbage during S4 resume.7z
+10,What is preventing AutoAgingTest version 2.0.0.7 from running on the OS?,"Please refer to the code in the patch file: the file 
+name is 'For AutoAgingTest2.0.0.7.zip memory test.7z'."""
+11,AutoAgingTest2.0.0.7 can not funtion problem.,Refer to patch: For AutoAgingTest2.0.0.7.zip memory test.7z
+12,How to fix AutoAgingTest2.0.0.7 can not run? ,Refer to patch: For AutoAgingTest2.0.0.7.zip memory test.7z
+13,Implement MODS auto into S4 by DC mode(OS action).,Referto patch: Support Gpe(Pwrbtn)ForAdaptiveS4.7z
+14,How to convert mods mode to s4 in DC mode?,Referto patch: Support Gpe(Pwrbtn)ForAdaptiveS4.7z
+15,"An external HDMI monitor is connected, but there is no HDMI audio device listed in the sound output devices in the system's bottom-right corner.","modify BIOS setup:
+AMD_PBS_SETUP.DP[1] set STR_DXIO_DDI_HDMI_TEXT
+AMD_PBS_SETUP.TxSLEWEn set STR_ENABLED_TEXT"
+16,Connecting both 4K and 2K HDMI monitors only results in a 1080P resolution.,"modify BIOS setup:
+AMD_PBS_SETUP.DP[1] set STR_DXIO_DDI_HDMI_TEXT
+AMD_PBS_SETUP.TxSLEWEn set STR_ENABLED_TEXT"
+17,"Connecting a 1080P_180Hz HDMI monitor, the maximum refresh rate available is only 60Hz.","modify BIOS setup:
+AMD_PBS_SETUP.DP[1] set STR_DXIO_DDI_HDMI_TEXT
+AMD_PBS_SETUP.TxSLEWEn set STR_ENABLED_TEXT"
+18,"
+DDR Controller Configuration->Thermal Throttling->disable all 3 items
+DDR Phy Configuration->DDR PHY->PPT control = Disable","PPT Control set manual, if the parameters below remain 0, they are disabled.
+Thermal Control set manual"
+19,Why does pressing the hotkey to enter the BIOS setup menu often fail to respond when the system is booting?,"Because the key confirmation wait time is too short, a delay needs to be added. Please refer to the code in the file OEM_HOTKEY_DELAY.zip."
+20,Can you give me OEM HOTKEY DELAY patch? ,"Because the key confirmation wait time is too short, a delay needs to be added. Please refer to the code in the file OEM_HOTKEY_DELAY.zip."
+21,Add a Num Lock option to the BIOS setup menu to control its On or Off state during the POST phase or in the initial state under the OS,Please refer to the code in the file Numlock_SOLUTION.zip
+22,What is the reference for the Numlock solution?,Refer to patch: Numlock_SOLUTION
+23,Update the OS Secure Boot key,Please refer to the code in the file EMDOOR_SECUREBOOT_KEY_v5_20231226
+24,Can you give me EMDOOR_SECUREBOOT_KEY,Refer to patch: EMDOOR_SECUREBOOT_KEY_v5_20231226
+25,"
+System reboot times to long.","Fix system reboot times to long.
+gEfiAmdAgesaPkgTokenSpaceGuid.PcdAcpController = FALSE"
+26,How to fix system reboot times to long? ,"Fix system reboot times to long.
+gEfiAmdAgesaPkgTokenSpaceGuid.PcdAcpController = FALSE"
+27,How to solve System reboot times to long? ,"Fix system reboot times to long.
+gEfiAmdAgesaPkgTokenSpaceGuid.PcdAcpController = FALSE"
+28,setup mouse function ,setup mouse function: CRB_I2C_TOUCH_FUNCTION_SUPPORT = 1
+29,Support Touchpad MODS wake,Revise the code to configure EC support and initialization for Touchpad MODS wake functionality in Modern Standby mode to resolve related wake issues.
+30,How to wake up the touchpad?,Revise the code to configure EC support and initialization for Touchpad MODS wake functionality in Modern Standby mode to resolve related wake issues.
+31,Consumes 5% of battery and enters MODS,"1.Need EC support 
+2.USE GPIO trigger Consumes 5% of battery"
+32,How to support multiple languages for the BIOS menu?,"Here is the modified code with the correct Value setting for supporting Traditional Chinese (zh-cht) and English (en-US):
+TOKEN
+  Name        = ""SUPPORTED_LANGUAGES""
+  Value       = ""zh-cht;en-US""
+  TokenType   = Expression
+  TargetMAK   = Yes
+End"
+33,How to add a new language?,"The code defines supported setup languages, adding ""zh-cht"" and ""en-US"" to resolve issues with setup language availability."
+34,"
+Reltek audio console app-> format only 48000Hz 16Bits option,
+           should be  has more option.e.g.""44100Hz 16bits"", ""48000Hz  24Bits""....","Revise code to configure audio device properties to expand Realtek Audio Console format options, adding support for more sample rates and bit depths."
+35,The following are the failed data points from the HDMI eye diagram test. The external consultant suggests lowering the voltage.,"modify BIOS setup:
+AMD_PBS_SETUP.DP[1] set STR_DXIO_DDI_HDMI_TEXT
+AMD_PBS_SETUP.TxSLEWEn set STR_ENABLED_TEXT"
+36,"Using an AsMedia chip to convert PCIE to SATA, the SATA device can't be displayed in the BIOS menu.",Refer to patch: Display_SATA_device
+37,"Add smart fan item, Reg 0x4F write 0x00 when auto,Reg 0x4F write 0x40 and Reg 0x4B write 0xFF when full fan.",Refer to patch: smartfan
+38,"Using an AsMedia chip to convert PCIE to SATA, the SATA size can't be displayed in the BIOS menu.",Refer to patch: Display_SATA_size
+39,"Modify AC power loss item, Reg 0xA8 bit 2 write 0 when always off,write 1 when always on.",Refer to patch: AC_POWER_LOSS
+40,How to solve the problem of USB4 GEVENT failing after returning from Modern Standby?,Please refer to the code in the file USB_effect_MS.zip
+41,How to solve the problem of USB4 GEVENT failing after returning from Modern Standby?,Refer to patch: USB_effect_MS
+42,Fix the bug for Board Memory Parameter: DQ QDT impedance,Refer to patch: PVT\Bug_29_On Board Memory Parameter.zip
+43,"How to fix the bug for Board Memory Parameter for ""DQ QDT impedance""",Refer to patch: PVT\Bug_29_On Board Memory Parameter.zip
+44,MS 28% to 97% to modify CLKREQ6 INIT_TABLE because WIFI uses CLKREQ6.,Refer to patch: WIFIcannotMS
+45,"Why does the system crash with a BSOD error code CRITICAL_PROCESS_DIED after returning from Modern Standby when an NVMe drive has an HDD password set?""","This is caused by the NVMe drive not supporting 
+D3Hot. Please refer to the code in the file D3Hot fix bsod critical process died.7z"
+46,What is the solution for NVMe HDD password for D3Hot fix bsod critical process died?,Refer to patch: NVMe HDD password for D3Hot fix bsod critical process died.7z
+47,"SSDT Table(CPMDFIG2, CDFFIGs, CPMDFDG1, CPMD3CLD, DFDGCNEV)will be replaced to OemID和OemTable.",Refer to patch: dGPUMSAcpiTableNotexist
+48,Why does the OEM POST logo disappear after the resolution changes,Please refer to the modified code in the file 'PostLogoDisappearResolutionChanged
+49,How to fix S4 wake up issue? ,Refer to patch: PVT\Bug_33__S4_Clear lowe power flag.zip
+50,"
+Clear ForceLowPowerMode flag ",Refer to patch: PVT\Bug_33__S4_Clear lowe power flag.zip
+51,The number of external monitors and output audio devices does not match,"Modify    Name  = ""PcdCfgMaxNumAudioEndpoints"""
+52,[Windows /Monitors] The number of external monitors and output audio devices does not match,"Modify Name = ""PcdCfgMaxNumAudioEndpoints"""
+53,How can the Build Date and Time be updated in real-time when building the BIOS ROM?,"Here is the modified code to ensure the Build Date 
+and Time are updated in real-time when building
+ the BIOS ROM:
+[File Patch]Root\makefile
+ifeq ($(TODAY),) 
+     export TODAY := $(shell $(DATE) +'%m/%d/%Y')
+endif
+ifeq ($(NOW),) 
+     export NOW := $(shell $(DATE) +%T)
+endif"
+54,What is the build time issue for OverWrite Build Day /Time?,"Revise the code to modify the makefile to overwrite the build date and time, ensuring the correct timestamp is used during the build process."
+55,Automatically clear fTpm nvram without showing messages,Refer to patch: Automatically clear fTpm nvram without showing messages.7z
+56,Fixed ctrl+home hotkey can not BIOS recovery for usb keyboard,Refer to patch: Fixed ctrl+home hotkey can not BIOS recovery for usb keyboard.7z
+57,How to do BIOS recovery hotkey?,Refer to patch: Fixed ctrl+home hotkey can not BIOS recovery for usb keyboard.7z
+58,SA50216 Supplement_TSE_2_22_1289,Refer to patch: SA50216 Supplement_TSE_2_22_1289.7z
+59,"AC only, the panel was no display when system wake form MS.",Refer to patch: MS_WAKE_PANEL_NO_DISPLAY.zip
+60,"AB819-S Project Issue: When an HDD password is set, the system hangs when waking up from Modern Standby.",Refer to patch: CZN_MS_HDD_PW_ISSUE.zip
+61,"After moving the HDD password information to 
+the Security page, the password information cannot be updated",Refer to patch: Security_page_update_hdd_password_info.zip
+62,AMD Second OEM logo support,Refer to patch: AMD_SecondOemLogo.zip
+63,AMD GFX ITEM MOVE FORM CBS,Refer to patch: AMD_GFX_ITEM_MOVE_FORM_CBS.zip
+64,Solve the problem that duplicate OS can't be displayed.,Refer to patch: duplicate_OS_show
+65,How can we fix the BSOD problem when flashing the BIOS under the OS?,"Modify the following sections in the original code:
+
+# ELINK
+#    Name        = ""EmdoorSmiFlashPreUpdate""
+#    Parent      = ""SMIFlashPreUpdateList""
+#    InvokeOrder = AfterParent
+#    Token       = ""EmdoorSmmLib_INF_SUPPORT"" = ""1""
+# End
+
+# ELINK
+#    Name        = ""EmdoorSmiFlashEndUpdate""
+#    Parent      = ""SMIFlashEndUpdateList""
+#    InvokeOrder = AfterParent
+#    Token       = ""EmdoorSmmLib_INF_SUPPORT"" = ""1""
+# End"
+66,Fix flash BIOS BSOD problem under OS.? ,Revise the code to configure the Flash BIOS update sequence to prevent BSOD issues occurring under the operating system.
+67,How to fix flash BIOS BSOD problem under OS,Revise the code to configure the Flash BIOS update sequence to prevent BSOD issues occurring under the operating system.
+68,Why can't the DB card be detected?,"You must modify the following two settings:
+1.Set Pcie Dxio Timing ControlEnable to Enabled.
+2.Set PCIE Link L0 Polling to 50000"
+69,DB card can't be detected ? ,"Pcie Dxio timing ControlEnable set Enabled
+PCIE Link L0 Pooling set 50000"
+70,"I can't detect the DB card, can you have any good suggestions?","Pcie Dxio timing ControlEnable set Enabled
+PCIE Link L0 Pooling set 50000"
+71,"Add AI button function, EC Q18 event.",Refer to patch: 2024\AI_Button.zip
+72,"AP39 Project Issue: After replacing the 7435 CPU, the system fails to enter Modern Standby.","Because the 7435 CPU does not have an iGPU, and the APX39 uses Smart MUX, the iGPU cannot be turned off.
+
+You need to set iGPU Configuration from 'iGPU Disabled' to 'Auto'"
+73,What is AMI VEB?,"AMI VEB (Visual eBIOS) is a BIOS/UEFI development
+ tool provided by AMI (American Megatrends Inc.). It is primarily used for BIOS/UEFI firmware development, testing, and debugging, enabling BIOS engineers to quickly configure and modify BIOS settings, thus accelerating the development process."
+74,Some dGPU performance is not up to standard.,Set PcdCfgPeApmEnable to 0 in eSetupPhoenix.xml to disable SmartShift.
+75,UNICORN custom modify for CBS,Refer to patch: UNICORN custom modify for CBS.7z
+76,Add white BIOS support for PI1.0.8.0 for STX,Refer to patch: Add white BIOS support for PI1.0.8.0 for STX.7z
+77,How to add white BIOS support?,Refer to patch: Add white BIOS support for PI1.0.8.0 for STX.7z
+78,Fixed PI1.0.8.0 LPDDR5 board id boot fail for STX,Refer to patch: Fixed PI1.0.8.0 LPDDR5 board id boot fail for STX.7z
+79,Add ABL_DEBUG_SUPPORT switch for STX,Refer to patch: Add ABL_DEBUG_SUPPORT switch for STX.7z
+80,Support customize XML path for STX,Refer to patch: Support customize XML path for STX.7z
+81,Aquarius Password behavior customizing,Refer to patch: Aquarius Password behavior.zip
+82,"When CPU and memory as well as SSD and VGA checks fail, GPIO6 is pulled high to control the LED.",Refer to patch: Check_Device.zip
+83,AMI Veb50 above occur Kernel32.lib error.,Refer to patch: AMI Veb50 Kernel32.lib compiler error
+84,Kernel32.lib error? ,Refer to patch: AMI Veb50 Kernel32.lib compiler error
+85,What is the Kernel32.lib error?,Refer to patch: AMI Veb50 Kernel32.lib compiler error
+86,How to disable NPU device?,Set PcdCFGNbioIPUEnable to 0
+87,How to enable NPU device? ,Set PcdCFGNbioIPUEnable to 1.
+88,Fix WOL issue when MS.,Refer to patch: WOLwhenMS.zip
+89,"AKK839 Project Issue: The system hangs at error code 
+0xABE4 during boot.","The reason is that the AMI code is intended for 
+CRB usage, where the EC is used to determine the Board ID.
+
+For an OEM project, it is necessary to ignore or remove the CRB EC Board ID."
+90,How to fix hang up 0xabe4?,JIRA EXT-109402 check whether remove CRB EC board ID
+91,AKK839 Side by side DDR5 memory setting,Refer to patch: AKK839_SideBySide_Memory1216.rar
+92,AKK839 Fix hang up 0xE2C5.,Refer to patch: AKK839_Fixed hang up E2C5.zip
+93,How to fix hang up 0xe2c5?,Refer to patch: AKK839_Fixed hang up E2C5.zip
+94,Emdoor WMI include Smart Charger Control,Refer to patch: EMDOOR_WMI_Smart_charger_2.0.zip
+95,APX656 PRO APU can't show Firmware protection,"1. BIOS設定:CBS -> SOC Miscellaneous Control -> Microsoft Security Levels -> Pluton fTPM Level 3
+2. Install OS Windows 11 24H2
+3. run windows update
+4. Check Windows Security 
+5. Firmware protection item display"
+96,How to fix touch pad wake KB backligh?,Refer to patch: TP_WAKE KB_BACKLIGHT.zip
+97,ARB656 APU power too low issue.,"RMB平台，如果設定了PPT APU only數值，
+就會被啟用影響，APU的瓦數會被PPT APU only數值限制"
+98,How to fix the ARB656 APU power too low issue?,"RMB平台，如果設定了PPT APU only數值，
+就會被啟用影響，APU的瓦數會被PPT APU only數值限制"
+99,Use the touchpad to light up the keyboard LED lights,Refer to patch: TP_WAKE KB_BACKLIGHT.zip
+100,Force 10sec Shut down(Power button pullmenu),Refer to patch: \Force_10S_Shutdown.zip
+101,How to implement force 10sec shutdown by power button? ,Refer to patch: \Force_10S_Shutdown.zip
+102,Force 10sec Shut down? ,Refer to patch: \Force_10S_Shutdown.zip
+103,Fixed Smbios Type1 and Type2 as override string by CRB code for STX,Refer to patch: Fixed Smbios Type1 and Type2 as override string by CRB code.7z
+104, Patch build error information difficult find,Refer to patch: Patch build error information difficult find.7z
+105,Add ML BIOS naming rule,Refer to patch: Add ML BIOS naming rule.7z
+106,Why is ml bios naming rule? ,Refer to patch: Add ML BIOS naming rule.7z
+107,How to Add ML BIOS naming rule?,Refer to patch: Add ML BIOS naming rule.7z
+108,Patch HDMI 4K 60Hz can not display for external panel for STX PS883X HDMI retimer,Refer to patch: Patch HDMI 4K 60Hz can not display for external panel for STX.7z
+109,Fixed PBS SETUP value is wrong after flash BIOS for STX.,Refer to patch: Fixed PBS SETUP value is wrong after flash BIOS.7z
+110,How to fixed PBS SETUP value is wrong after flash BIOS for STX?,Refer to patch: Fixed PBS SETUP value is wrong after flash BIOS.7z
+111,Why is the USB port completely unresponsive?,"Need to cancel the action of USB OC pin. 
+Modify the code:
+    Name  = ""PcdXhciOcPinSelect"" &    Name  = ""PcdXhci1OcPinSelect""
+    Value  = ""0xFFFFFFFF"""
+112,"
+PI after RMB PI 1.0.0.1 will fail when running Memory Margin.",Need to disable phy low power. (The official version cannot be imported for testing purposes.)
+113,Fan Noise Implemen,Refer to patch: FanNoise
+114,How to implement the Fan Noise function?,"Refer to patch: FanNoise
+
+"
+115,"MS WHQL test item failed.
+    System Audio - KS Position Test failed","If you update SMU version to 4.69.48.0 and later please make sure below pcd value=0 to fix audio WHLK testing fail issue. The formal change as also below will be implemented into PI1005.
+"
+116,App Load Default Feature,Refer to patch: AppLoadDefault
+117,App Load Default ?,Refer to patch: AppLoadDefault
+118,Add Armor feature,Refer to patch: Armor
+119,Change Logo,Refer to patch: ChangeLogo
+120,AGPIO85 GPIO Pin have Floating status,"Modify the code:
+Smu13FeaturesEnable.h FEATURE_FAN_CONTROLLER_BIT set 0,
+PcdMapping
+    Name  = ""PcdPublicFanControlEnable""
+    GuidSpace  = ""gEfiAmdAgesaPkgTokenSpaceGuid""
+    PcdType  = ""PcdsDynamicDefault""
+    DataType  = ""Boolean""
+    Value  = ""FALSE""
+    Offset  = 00h
+    Length  = 01h
+    TargetDSC = Yes
+End"
+121,Why agpio85 function can not work? ,"Modify the code:
+Smu13FeaturesEnable.h FEATURE_FAN_CONTROLLER_BIT set 0,
+PcdMapping
+    Name  = ""PcdPublicFanControlEnable""
+    GuidSpace  = ""gEfiAmdAgesaPkgTokenSpaceGuid""
+    PcdType  = ""PcdsDynamicDefault""
+    DataType  = ""Boolean""
+    Value  = ""FALSE""
+    Offset  = 00h
+    Length  = 01h
+    TargetDSC = Yes
+End"
+122,"Set the OS brightness to 0%, and the measured panel brightness must be 13 cd/m².","AC918 Project requires adjusting the following code:
+
+AMD_CPM_DISPLAY_FEATURE_TABLE gCpmDisplayFeatureTable
+→ ① Minimum Signal
+→ ② First Lumi/Signal
+
+① and ② cannot be equal → If they are the same, the brightness setting becomes invalid, resulting in the darkest display"
+123,"Why can't the BIOS be rolled back to an older version
+ after flashing?","The root cause is the increase in PROJECT_MINOR_VERSION.
+Here is the modified code:
+TOKEN
+    Name  = ""IGNORE_IMAGE_ROLLBACK""
+    Value  = ""1""
+    Help  = ""When enabled, FW Capsule Validate logic will skip image Revision.""
+    TokenType = Boolean
+    TargetH = Yes
+End"
+124,Panel initial boot brightness adjustment,"TOKEN
+    Name  = ""AMD_GOP_PLATFORMTODRIVER_SUPPORT""
+    Value  = ""1""
+    Help  = ""Please turn on if you need GOP platform to drivers""
+    TokenType = Boolean
+    TargetH = Yes
+End
+Here is the modified code:
+    #define GNB_ONEOF_PLATFORMTODRIVER_LCD_BOOTUP_BL_LEVEL\
+        numeric varid = SETUP_DATA.AmdGopLcdBootUpBlLevel, \
+            prompt = STRING_TOKEN(STR_GOP_BOOTUP_LEVEL), \
+            help = STRING_TOKEN(STR_GOP_BOOTUP_LEVEL_HELP), \
+	    	flags = RESET_REQUIRED,\
+            minimum = 0x0, \
+            maximum = 0xff, \
+            step = 1, \
+            default = 0xff,\
+            default = 0xff, defaultstore = AmiMfgDefault,\
+        endnumeric;"
+125,Avoid system reset when booting into windows on debug mode enable,"Causing by lib, remove unused lib, it's passed"
+126,Windows boot manager disappear when doing OS reboot.,Update EFI OS name module to V19
+127,"MS WHQL test item failed
+HLK test fail ""BitLocker Tpm And Recovery Password 
+tests for AOAC devices with PCR[7]""",refert to EIP700163.7z
+128,System hangs during bring-up,"AmdCpmOemInitPeim.c / AmdPbsHii.vfr
+KBC supporyt 0
+EC Support 0"
+129,Bring up?,"AmdCpmOemInitPeim.c / AmdPbsHii.vfr
+KBC supporyt 0
+EC Support 0"
+130,"Reduce PCIe SSD read and write performance in 
+battery mode.","Example Code for Modification-->
+CRB default:
+     AmdCpmOemTable.c or Project_Gpio_Table.h 
+      PORT_PARAM (PP_PSPP_DC, 0x122)     //DC_DirectIndirect[11:8], DC_MaxPreferredSpeed[7:4], DC_MinPreferredSpeed[3:0]
+Modify:
+      AmdCpmOemTable.c or Project_Gpio_Table.h 
+      PORT_PARAM (PP_PSPP_DC, 0x133)     //DC_DirectIndirect[11:8], DC_MaxPreferredSpeed[7:4], DC_MinPreferredSpeed[3:0]"
+131,How to adjust pcie ssd speed? ,"CRB default:
+     AmdCpmOemTable.c or Project_Gpio_Table.h 
+      PORT_PARAM (PP_PSPP_DC, 0x122)     //DC_DirectIndirect[11:8], DC_MaxPreferredSpeed[7:4], DC_MinPreferredSpeed[3:0]
+Modify:
+      AmdCpmOemTable.c or Project_Gpio_Table.h 
+      PORT_PARAM (PP_PSPP_DC, 0x133)     //DC_DirectIndirect[11:8], DC_MaxPreferredSpeed[7:4], DC_MinPreferredSpeed[3:0]"
+132,"Why does disabling AMD_PSP_ROM_ARMOR3_SMM_SUPPORT
+ cause the system to hang?","Here is the modified code:
+TOKEN
+    Name  = ""AMD_PSP_ROM_ARMOR3_SMM_SUPPORT""
+    Value  = ""0""
+    Help  = ""Main switch to enable AmdPspRomArmorSmm support in Project""
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+PcdMapping
+    Name  = ""PcdAmdPspRomArmorSelection""
+    GuidSpace  = ""gEfiAmdAgesaPkgTokenSpaceGuid""
+    PcdType  = ""PcdsDynamicDefault""
+    Value  = ""0""
+    TargetDSC = Yes
+    Token = ""AMD_PSP_ROM_ARMOR3_SMM_SUPPORT"" ""="" ""0""
+End"
+133,How to disable ARMOR3? ,"TOKEN
+    Name  = ""AMD_PSP_ROM_ARMOR3_SMM_SUPPORT""
+    Value  = ""0""
+    Help  = ""Main switch to enable AmdPspRomArmorSmm support in Project""
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+PcdMapping
+    Name  = ""PcdAmdPspRomArmorSelection""
+    GuidSpace  = ""gEfiAmdAgesaPkgTokenSpaceGuid""
+    PcdType  = ""PcdsDynamicDefault""
+    Value  = ""0""
+    TargetDSC = Yes
+    Token = ""AMD_PSP_ROM_ARMOR3_SMM_SUPPORT"" ""="" ""0""
+End"
+134,How to fix the AMD_PSP_ROM_ARMOR3_SMM_SUPPORT?,"TOKEN
+    Name  = ""AMD_PSP_ROM_ARMOR3_SMM_SUPPORT""
+    Value  = ""0""
+    Help  = ""Main switch to enable AmdPspRomArmorSmm support in Project""
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+PcdMapping
+    Name  = ""PcdAmdPspRomArmorSelection""
+    GuidSpace  = ""gEfiAmdAgesaPkgTokenSpaceGuid""
+    PcdType  = ""PcdsDynamicDefault""
+    Value  = ""0""
+    TargetDSC = Yes
+    Token = ""AMD_PSP_ROM_ARMOR3_SMM_SUPPORT"" ""="" ""0""
+End"
+135,Dynamically change the VGA SSID by CPU brand name during the boot process.,"Example Code for Modification-->
+AsmCpuid (0x80000002, NULL, NULL, NULL, &RegEdx); //R'one 
+  if (  ((RegEdx & 0xFFFFFFFF) == 0x30303435) |  ((RegEdx & 0xFFFFFFFF) == 0x30303635) |    ((RegEdx & 0xFFFFFFFF) == 0x30303835)   ){ //CZN? (Modify to meet)   // 5400,5600,5800 CPU
+      Value = 0x12072782; //-->(Fill your SSID_
+  }else{
+      Value = PcdGet32 (PcdAmdCfgGnbIGPUSSID);  
+  }"
+136,"The VGA registry in the OS related to SmartMuxAX 1.5
+ registers.","The related path and registry keys are as follows.
+Path:
+    Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000
+    Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0001
+
+Test APU/dGPU:
+DalMpVisualConfirm =A
+
+Driver simulation:
+DalFeatureSmartMuxSupport=2
+KMD_SmartMuxSupported=1
+KMD_SmartMuxDefaultMode=1"
+137,"Triggering an NMI causes the system to experience a
+ BSOD for debugging purposes.",Please refer to the code in the file NmiBsodStudy.zip
+138,"Why can't the eDP display on the AMD CPU + AMD 
+GPU platform?","Here is the modified code:
+TOKEN
+    Name  = ""GNB_ForceIgdDisplay_SUPPORT""
+    Value  = ""1""
+    Help  = ""Main switch for Force IGD display function support for Navi14 dGPU with EEPROM (legacy VBIOS only)""
+    TokenType = Boolean
+    TargetH = Yes
+End"
+139,"How can we improve the HDMI 2.0 output display
+ failure?","Root Cause:
+The hardware does not provide sufficient capability to 
+achieve 6 Gbps performance. To improve stability, the specification needs to be downgraded.  
+ Purpose: HDMI2.0 6GBPS disable
+     HDMI connect on DP1 port 
+     AmdPbsConfiguration->AdjustDdi1  = 1; 
+     AmdPbsConfiguration->DP1DisplayCaps   = 0x200;"
+140,How to improve HDMI output failure?  ,"To improve HDMI output failure, the purpose is to disable HDMI2.0 6GBPS. The solution involves setting AmdPbsConfiguration->AdjustDdi1 to 1 and AmdPbsConfiguration->DP1DisplayCaps to 0x200 when HDMI is connected on the DP1 port."
+141,Workaround-ADATA M.2 SSD 512GB Device Lose,"   Purpose:Disable SSD0 /SSD1 ASPM support
+      DxioAspmDisabled,                           // DxioAspmL0sL1, // ASPM
+      DxioAspmL11Disabled,                   // ASPM L1.1 
+      DxioAspmL12Disabled,                   // ASPM L1.2"
+142,How to fix ssd device lose?,"   Purpose:Disable SSD0 /SSD1 ASPM support
+      DxioAspmDisabled,                           // DxioAspmL0sL1, // ASPM
+      DxioAspmL11Disabled,                   // ASPM L1.1 
+      DxioAspmL12Disabled,                   // ASPM L1.2"
+143,Workaround-ADATA M.2 SSD 512GB Device Lose?,"   Purpose:Disable SSD0 /SSD1 ASPM support
+      DxioAspmDisabled,                           // DxioAspmL0sL1, // ASPM
+      DxioAspmL11Disabled,                   // ASPM L1.1 
+      DxioAspmL12Disabled,                   // ASPM L1.2"
+144,AMI SCEWIN_64 change password function,"TSE tokens RT_ACCESS_SUPPORT_IN_HPKTOOL and
+RT_ACCESS_FOR_EFIVARSTORE must be enabled"
+145,SMBIOS for MTK device,Refer to patch: SmbiosforMtk
+146,"Add the OKEC flag to the thermal device to 
+avoid issues when the EC is not ready.",Please refer to the code in the file Thermal device add OKEC flag avoid EC not  ready

@@ -9,7 +9,9 @@ import csv
 # Augmentation Prompt String Templates
 # ======================
 
-
+def llm_predict(llmobj=None):
+    if llmobj == None:
+        raise ValueError("llmobj is None")
 
 # ======================
 # 擴展策略的選擇
